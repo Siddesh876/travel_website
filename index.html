@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb Travel Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Airbnb</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Listings</a></li>
+                <li><a href="#">Tours</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Find Your Perfect Stay</h2>
+        <p>Explore unique homes and experiences around the world.</p>
+    </section>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search destinations, homes, and more...">
+        <button id="searchButton">Search</button>
+    </div>
+
+    <section class="listings" id="listings">
+        <!-- Dynamic listings will be populated here -->
+    </section>
+
+    <section class="tours-section">
+        <h2>Available Tours</h2>
+        <div id="tours">
+            <!-- Dynamic tours will be populated here -->
+        </div>
+    </section>
+
+    <section class="review-section">
+        <h2>Write a Review</h2>
+        <form id="reviewForm">
+            <textarea id="reviewInput" placeholder="Share your experience..." rows="4" cols="50"></textarea>
+            <br>
+            <button type="submit">Submit Review</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Airbnb. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Example JavaScript for dynamic functionality
+        document.getElementById('searchButton').addEventListener('click', () => {
+            const query = document.getElementById('searchInput').value;
+            alert(`Search functionality not implemented yet. Query: ${query}`);
+        });
+
+        document.getElementById('reviewForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const review = document.getElementById('reviewInput').value;
+            alert(`Thank you for your review: "${review}"`);
+        });
+
+        // Placeholder for fetching and displaying listings dynamically
+        const listings = [
+            { id: 1, name: "Cozy Cottage", price: "$120/night", img: "listing1.jpg" },
+            { id: 2, name: "Modern Apartment", price: "$150/night", img: "listing2.jpg" },
+            { id: 3, name: "Beachside Villa", price: "$300/night", img: "listing3.jpg" },
+        ];
+
+        const listingsContainer = document.getElementById('listings');
+        listings.forEach(listing => {
+            const listingElement = document.createElement('div');
+            listingElement.classList.add('listing');
+            listingElement.innerHTML = `
+                <img src="${listing.img}" alt="${listing.name}">
+                <div class="info">
+                    <h3>${listing.name}</h3>
+                    <p>${listing.price}</p>
+                    <button>Book Now</button>
+                </div>
+            `;
+            listingsContainer.appendChild(listingElement);
+        });
+
+        // Placeholder for fetching and displaying tours dynamically
+        const tours = [
+            { id: 1, name: "City Walking Tour", price: "$50/person", img: "tour1.jpg" },
+            { id: 2, name: "Wine Tasting Tour", price: "$75/person", img: "tour2.jpg" },
+            { id: 3, name: "Mountain Hiking Adventure", price: "$100/person", img: "tour3.jpg" },
+        ];
+
+        const toursContainer = document.getElementById('tours');
+        tours.forEach(tour => {
+            const tourElement = document.createElement('div');
+            tourElement.classList.add('tour');
+            tourElement.innerHTML = `
+                <img src="${tour.img}" alt="${tour.name}">
+                <div class="info">
+                    <h3>${tour.name}</h3>
+                    <p>${tour.price}</p>
+                    <button>Book Now</button>
+                </div>
+            `;
+            toursContainer.appendChild(tourElement);
+        });
+    </script>
+</body>
+</html>
